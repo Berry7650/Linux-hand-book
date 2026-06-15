@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Linux-hand-book
-=======
 # Linux Command Basic Help Page
 
 A simple Linux command help website for beginners and quick reference.
@@ -108,4 +105,3 @@ Possible improvements for later:
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE).
->>>>>>> d0b45ee (Initial Linux command handbook)
