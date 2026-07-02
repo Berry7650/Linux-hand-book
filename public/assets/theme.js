@@ -250,16 +250,17 @@ function updateClock() {
 function applyMoonWallpaper() {
   if (document.documentElement.dataset.theme !== "moon") return;
 
-  const wallpaperChoices = [...wallpapers, ...fallbackWallpapers];
   const moonColor = moonColors[wallpaperIndex % moonColors.length];
+  const wallpaper = moonColor.name === "blue moon" && wallpapers.length
+    ? wallpapers[0]
+    : fallbackWallpapers[wallpaperIndex % fallbackWallpapers.length];
 
-  if (!wallpaperChoices.length) {
+  if (!wallpaper) {
     document.documentElement.style.removeProperty("--moon-wallpaper-image");
     return;
   }
 
   const root = window.__SITE_ROOT__ || "";
-  const wallpaper = wallpaperChoices[wallpaperIndex % wallpaperChoices.length];
   const image = wallpaper.startsWith("wallpapers/") ? `url("${root}${wallpaper}")` : wallpaper;
   document.documentElement.style.setProperty("--moon-wallpaper-image", image);
   document.documentElement.style.setProperty("--moon-core", moonColor.core);
@@ -303,8 +304,7 @@ async function loadMoonWallpapers() {
 function cycleMoonWallpaper() {
   if (document.documentElement.dataset.theme !== "moon") return;
 
-  const wallpaperChoices = [...wallpapers, ...fallbackWallpapers];
-  const cycleLength = Math.max(wallpaperChoices.length, moonColors.length);
+  const cycleLength = moonColors.length;
   if (!cycleLength) return;
 
   wallpaperIndex = (wallpaperIndex + 1) % cycleLength;

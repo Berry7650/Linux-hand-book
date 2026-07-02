@@ -118,7 +118,7 @@ async function setupSearch() {
     if (count) count.textContent = `${matches.length} ${matches.length === 1 ? "command" : "commands"}`;
     if (title) title.textContent = `Results for "${input.value.trim()}"`;
     if (empty) empty.hidden = matches.length > 0;
-    results.hidden = matches.length === 0;
+    results.hidden = false;
     if (matches.length === 0) {
       restartNoResultsBlink();
     }

@@ -11,7 +11,7 @@
   --code: #151a1f;
   --code-text: #e5f8f5;
   --shadow: 0 18px 45px rgba(27, 33, 38, 0.08);
-  --blink-duration: 3s;
+  --blink-duration: 2.4s;
   --moon-wallpaper-image: linear-gradient(120deg, #0b1020, #16213a 34%, #1e2d4f 62%, #0f172a);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -760,7 +760,7 @@ label {
   background: #ecfdf3;
   animation:
     card-enter 220ms ease forwards,
-    match-blink var(--blink-duration) ease-in-out 3;
+    match-blink var(--blink-duration) cubic-bezier(0.4, 0, 0.2, 1) 3;
 }
 
 .command-card.is-related-match {
@@ -768,26 +768,21 @@ label {
   background: #fff1f2;
   animation:
     card-enter 220ms ease forwards,
-    related-blink var(--blink-duration) ease-in-out 3;
+    related-blink var(--blink-duration) cubic-bezier(0.4, 0, 0.2, 1) 3;
 }
 
 @keyframes match-blink {
-  0% {
-    border-color: var(--line);
-    background: var(--surface);
+  0%,
+  100% {
+    border-color: #16a34a;
+    background: #ecfdf3;
     box-shadow: none;
   }
 
   50% {
     border-color: #16a34a;
     background: #ecfdf3;
-    box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.22);
-  }
-
-  100% {
-    border-color: #16a34a;
-    background: #ecfdf3;
-    box-shadow: none;
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.2);
   }
 }
 
@@ -795,13 +790,14 @@ label {
 :root[data-theme="moon"] .command-card.is-exact-match {
   animation:
     card-enter 220ms ease forwards,
-    match-blink-dark var(--blink-duration) ease-in-out 3;
+    match-blink-dark var(--blink-duration) cubic-bezier(0.4, 0, 0.2, 1) 3;
 }
 
 @keyframes match-blink-dark {
-  0% {
-    border-color: var(--line);
-    background: var(--surface);
+  0%,
+  100% {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.18);
     box-shadow: none;
   }
 
@@ -810,18 +806,13 @@ label {
     background: rgba(34, 197, 94, 0.18);
     box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.2);
   }
-
-  100% {
-    border-color: #22c55e;
-    background: rgba(34, 197, 94, 0.18);
-    box-shadow: none;
-  }
 }
 
 @keyframes related-blink {
-  0% {
-    border-color: var(--line);
-    background: var(--surface);
+  0%,
+  100% {
+    border-color: #dc143c;
+    background: #fff1f2;
     box-shadow: none;
   }
 
@@ -830,25 +821,20 @@ label {
     background: #fff1f2;
     box-shadow: 0 0 0 5px rgba(220, 20, 60, 0.2);
   }
-
-  100% {
-    border-color: #dc143c;
-    background: #fff1f2;
-    box-shadow: none;
-  }
 }
 
 :root[data-theme="electricity"] .command-card.is-related-match,
 :root[data-theme="moon"] .command-card.is-related-match {
   animation:
     card-enter 220ms ease forwards,
-    related-blink-dark var(--blink-duration) ease-in-out 3;
+    related-blink-dark var(--blink-duration) cubic-bezier(0.4, 0, 0.2, 1) 3;
 }
 
 @keyframes related-blink-dark {
-  0% {
-    border-color: var(--line);
-    background: var(--surface);
+  0%,
+  100% {
+    border-color: #fb7185;
+    background: rgba(251, 113, 133, 0.18);
     box-shadow: none;
   }
 
@@ -856,12 +842,6 @@ label {
     border-color: #fb7185;
     background: rgba(251, 113, 133, 0.18);
     box-shadow: 0 0 0 5px rgba(251, 113, 133, 0.18);
-  }
-
-  100% {
-    border-color: #fb7185;
-    background: rgba(251, 113, 133, 0.18);
-    box-shadow: none;
   }
 }
 
